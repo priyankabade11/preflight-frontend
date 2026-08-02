@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Safety net — keeps colors correct even if Tailwind's cache goes stale.
+   Now that tailwind.config.js has the right colors, these are mostly redundant,
+   but harmless to keep. */
+.bg-void { background-color: #0A0E1A !important; }
+.bg-surface { background-color: #121A2C !important; }
+.border-surface2 { border-color: #26314A !important; }
+.bg-surface2 { background-color: #26314A !important; }
+
+.text-textmain { color: #EDF1F9 !important; }
+.text-textmuted { color: #8896B0 !important; }
+
+.text-pulse { color: #3D5AFE !important; }
+.bg-pulse { background-color: #3350E8 !important; }
+.bg-pulse\/10 { background-color: rgba(61, 90, 254, 0.12) !important; }
+.bg-pulse\/90:hover { background-color: #2A44D6 !important; }
+
+.text-gold { color: #C9A24B !important; }
+.bg-gold { background-color: #C9A24B !important; }
+.bg-gold\/10 { background-color: rgba(201, 162, 75, 0.12) !important; }
+
+.text-warn { color: #C98A3A !important; }
+.bg-warn\/10 { background-color: rgba(201, 138, 58, 0.12) !important; }
+
+.text-crit { color: #B84C42 !important; }
+.bg-crit\/10 { background-color: rgba(184, 76, 66, 0.12) !important; }
+
+body {
+  background-color: #0A0E1A !important;
+  color: #EDF1F9 !important;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Display type carries the "diligence memo" personality — a restrained serif,
+   set slightly tight, never at heavy weight for body copy. */
+.font-display {
+  letter-spacing: -0.01em;
+}
+
+/* A quiet 1px gold hairline used as a signature rule under key headers. */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(201,162,75,0.65), rgba(201,162,75,0));
+}
+
+.bg-surface {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.02) inset;
+}
+
+/* Remove the white focus outline that appeared when clicking chart segments */
+.recharts-wrapper *:focus,
+.recharts-wrapper *:focus-visible,
+.recharts-surface *:focus,
+.recharts-surface *:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  -moz-outline-style: none !important;
+}
+
+/* Prevent accidental blue text-selection highlight when clicking/dragging on charts or nav */
+body {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+/* Still allow selecting text in actual input fields */
+input, textarea {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+::selection {
+  background: rgba(201, 162, 75, 0.35);
+}
+
+/* Visible keyboard focus, in the accent gold rather than the browser default blue */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid #C9A24B;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
